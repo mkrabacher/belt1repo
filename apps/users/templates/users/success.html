@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log & Reg | Success | Welcome {{user.fName}} {{user.lName}}</title>
+</head>
+<body>
+    <h1>Success | Welcome {{curr_user.fName}} {{curr_user.lName}}</h1>
+    <a href="/logout">logout</a>
+    <h1>logged in user: {{request.session.curr_user_id}}</h1>
+
+    <table>
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>birthday</th>
+            <th>password</th>
+        </thead>
+        <tbody>
+            {%for user in users%}
+            <tr>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.birthday}}</td>
+                <td>{{user.password}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+<h1>Current dateTime: {{CDT}}</h1>
+<h1>Current date: {{CD}}</h1>
+<h1>Current Time: {{CT}}</h1>
+<form action="/timecheck" method="post">
+    {%csrf_token%}
+    <label for="time">time:
+        <input type="time" name="time">
+    </label>
+    <label for="date">date:
+        <input type="date" name="date">
+    </label>
+    <input type="submit" value="submit">
+</form>
+<h1>date: {{date}}</h1>
+<h1>time: {{time}}</h1>
+</html>
